@@ -35,7 +35,12 @@ public class StringCalculatorTests {
   }
 
   @Test
-  public void testShoouldAcceptNewLineAsDelimiter() {
+  public void testShouldAcceptNewLineAsDelimiter() {
     Assertions.assertEquals(6, stringCalculator.Add("1\n2,3"));
+  }
+
+  @Test
+  public void testShouldAcceptCustomDelimiterAsSyntax() {
+    Assertions.assertEquals(3, stringCalculator.Add("//;\n1;2"));
   }
 }
