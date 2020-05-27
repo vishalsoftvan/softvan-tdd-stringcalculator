@@ -23,4 +23,9 @@ public class StringCalculatorTests {
   public void testShouldReturnNumberOnNumber() {
     Assertions.assertEquals(1, stringCalculator.Add("1"));
   }
+
+  @Test
+  public void testShouldReturnSumOnMultipleNumbers() {
+    Assertions.assertEquals(3, stringCalculator.Add("1,2"));
+  }
 }
