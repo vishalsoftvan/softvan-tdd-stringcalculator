@@ -1,5 +1,9 @@
 package in.softvan.tdd;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class StringCalculator {
 
   public int Add(String numbers) {
@@ -7,7 +11,10 @@ public class StringCalculator {
       return 0;
     } else if (numbers.contains(",")) {
       String[] numbersList = numbers.split(",");
-      return toInt(numbersList[0]) + toInt(numbersList[1]);
+      List<String> strNumberList = Arrays.asList(numbersList);
+      List<Integer> intNumberList = new ArrayList<>();
+      strNumberList.forEach(number -> intNumberList.add(toInt(number)));
+      return intNumberList.stream().mapToInt(Integer::intValue).sum();
     } else {
       return toInt(numbers);
     }

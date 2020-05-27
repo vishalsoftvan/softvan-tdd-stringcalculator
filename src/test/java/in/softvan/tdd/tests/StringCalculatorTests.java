@@ -28,4 +28,9 @@ public class StringCalculatorTests {
   public void testShouldReturnSumOnMultipleNumbers() {
     Assertions.assertEquals(3, stringCalculator.Add("1,2"));
   }
+
+  @Test
+  public void testShouldReturnSumOnMultipleUnCountedNumbers() {
+    Assertions.assertEquals(6, stringCalculator.Add("1,2,3"));
+  }
 }
