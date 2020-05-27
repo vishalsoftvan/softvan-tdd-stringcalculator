@@ -78,4 +78,14 @@ public class StringCalculatorTests {
   public void testShouldAcceptMultipleCharDelimiter2() {
     Assertions.assertEquals(3, stringCalculator.Add("//[;;;]\n1;;;2"));
   }
+
+  @Test
+  public void testShouldAcceptMultipleCharDelimiterWithMultipleDelimiter() {
+    Assertions.assertEquals(6, stringCalculator.Add("//[**][;;]\n1**2;;3"));
+  }
+
+  @Test
+  public void testShouldAcceptMultipleCharDelimiterWithMultipleDelimiter2() {
+    Assertions.assertEquals(15, stringCalculator.Add("//[+][**][;;][%%%]\n1**2;;3%%%4+5"));
+  }
 }

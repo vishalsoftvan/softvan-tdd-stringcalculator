@@ -52,7 +52,7 @@ public class StringCalculator {
         customDelimiter = customDelimiter.substring(1, customDelimiter.length() - 1);
       }
       String secondLineNumbers = matcher.group(2);
-      return secondLineNumbers.split(getDelimiterValue(customDelimiter));
+      return secondLineNumbers.split(getDelimiterValue(customDelimiter).replace("][", "|"));
     }
     return numbers.split(",|\n");
   }
