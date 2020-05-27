@@ -45,13 +45,35 @@ public class StringCalculator {
 
   private String[] tokenize(String numbers) {
     if (numbers.startsWith("//")) {
-      Matcher matcher = Pattern.compile("//(.)\n(.*)").matcher(numbers);
+      Matcher matcher = Pattern.compile("//(.+)\n(.+)").matcher(numbers);
       matcher.matches();
       String customDelimiter = matcher.group(1);
+      if (customDelimiter.length() - 1 > 0) {
+        customDelimiter = customDelimiter.substring(1, customDelimiter.length() - 1);
+      }
       String secondLineNumbers = matcher.group(2);
-      return secondLineNumbers.split(customDelimiter);
+      return secondLineNumbers.split(getDelimiterValue(customDelimiter));
     }
     return numbers.split(",|\n");
+  }
+
+  private String getDelimiterValue(String delimiter) {
+    Character[] operators = new Character[] { '-', '+', '/', '*', 'x', '^', 'X' };
+    StringBuilder newDelimiter = new StringBuilder();
+    for (int i = 0; i < delimiter.length(); i++) {
+      boolean isTrue = false;
+      for (Character operator : Arrays.asList(operators)) {
+        if (delimiter.charAt(i) == operator) {
+          isTrue = true;
+        }
+      }
+      if (isTrue) {
+        newDelimiter.append("\\").append(delimiter.charAt(i));
+      } else {
+        newDelimiter.append(delimiter.charAt(i));
+      }
+    }
+    return newDelimiter.toString();
   }
 }
 

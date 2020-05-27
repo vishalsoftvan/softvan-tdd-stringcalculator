@@ -68,4 +68,14 @@ public class StringCalculatorTests {
   public void testShouldIgnoreNumbersGreaterThan1000() {
     Assertions.assertEquals(3, stringCalculator.Add("1,2,1000,1002"));
   }
+
+  @Test
+  public void testShouldAcceptMultipleCharDelimiter() {
+    Assertions.assertEquals(3, stringCalculator.Add("//[**]\n1**2"));
+  }
+
+  @Test
+  public void testShouldAcceptMultipleCharDelimiter2() {
+    Assertions.assertEquals(3, stringCalculator.Add("//[;;;]\n1;;;2"));
+  }
 }
