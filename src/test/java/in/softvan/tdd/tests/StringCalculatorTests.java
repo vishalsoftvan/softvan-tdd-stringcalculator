@@ -18,4 +18,9 @@ public class StringCalculatorTests {
   public void testZeroOnEmptyString() {
     Assertions.assertEquals(0, stringCalculator.Add(""));
   }
+
+  @Test
+  public void testShouldReturnNumberOnNumber() {
+    Assertions.assertEquals(1, stringCalculator.Add("1"));
+  }
 }
