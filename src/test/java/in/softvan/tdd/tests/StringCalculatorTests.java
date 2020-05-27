@@ -43,4 +43,14 @@ public class StringCalculatorTests {
   public void testShouldAcceptCustomDelimiterAsSyntax() {
     Assertions.assertEquals(3, stringCalculator.Add("//;\n1;2"));
   }
+
+  @Test
+  public void testShouldRaiseExceptionOnNegative() {
+    try {
+      stringCalculator.Add("-1,2,3");
+      Assertions.fail("Exception Expected");
+    } catch (RuntimeException ex) {
+      Assertions.assertEquals("Negatives not allowed", ex.getMessage());
+    }
+  }
 }

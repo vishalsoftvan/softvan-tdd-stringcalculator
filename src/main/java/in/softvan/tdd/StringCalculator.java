@@ -14,8 +14,18 @@ public class StringCalculator {
     } else {
       String[] numbersList = tokenize(numbers);
       List<String> strNumberList = Arrays.asList(numbersList);
+
       List<Integer> intNumberList = new ArrayList<>();
-      strNumberList.forEach(number -> intNumberList.add(toInt(number)));
+
+      strNumberList.forEach(number -> {
+        int parsedNumber = toInt(number);
+        // exception for negative numbers
+        if (parsedNumber < 0) {
+          throw new RuntimeException("Negatives not allowed");
+        }
+        intNumberList.add(parsedNumber);
+      });
+
       return intNumberList.stream().mapToInt(Integer::intValue).sum();
     }
   }
