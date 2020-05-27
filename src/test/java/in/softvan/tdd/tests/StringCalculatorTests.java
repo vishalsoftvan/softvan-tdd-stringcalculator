@@ -33,4 +33,9 @@ public class StringCalculatorTests {
   public void testShouldReturnSumOnMultipleUnCountedNumbers() {
     Assertions.assertEquals(6, stringCalculator.Add("1,2,3"));
   }
+
+  @Test
+  public void testShoouldAcceptNewLineAsDelimiter() {
+    Assertions.assertEquals(6, stringCalculator.Add("1\n2,3"));
+  }
 }
