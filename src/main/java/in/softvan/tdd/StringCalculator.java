@@ -25,7 +25,10 @@ public class StringCalculator {
         if (parsedNumber < 0) {
           negativeNumberList.add(parsedNumber);
         }
-        intNumberList.add(parsedNumber);
+        // number greater that 1000 should be ignored
+        if (parsedNumber < 1000) {
+          intNumberList.add(parsedNumber);
+        }
       });
 
       if (!negativeNumberList.isEmpty()) {

@@ -55,12 +55,17 @@ public class StringCalculatorTests {
   }
 
   @Test
-  void testShouldRaiseExceptionOnMultipleNegatives() {
+  public void testShouldRaiseExceptionOnMultipleNegatives() {
     try {
       stringCalculator.Add("-1,-2,3");
       Assertions.fail("Exception Expected");
     } catch (RuntimeException ex) {
       Assertions.assertEquals("Negatives not allowed [-1, -2]", ex.getMessage());
     }
+  }
+
+  @Test
+  public void testShouldIgnoreNumbersGreaterThan1000() {
+    Assertions.assertEquals(3, stringCalculator.Add("1,2,1000,1002"));
   }
 }
