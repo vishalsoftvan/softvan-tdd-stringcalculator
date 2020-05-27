@@ -17,14 +17,20 @@ public class StringCalculator {
 
       List<Integer> intNumberList = new ArrayList<>();
 
+      List<Integer> negativeNumberList = new ArrayList<>();
+
       strNumberList.forEach(number -> {
         int parsedNumber = toInt(number);
         // exception for negative numbers
         if (parsedNumber < 0) {
-          throw new RuntimeException("Negatives not allowed");
+          negativeNumberList.add(parsedNumber);
         }
         intNumberList.add(parsedNumber);
       });
+
+      if (!negativeNumberList.isEmpty()) {
+        throw new RuntimeException("Negatives not allowed " + negativeNumberList.toString());
+      }
 
       return intNumberList.stream().mapToInt(Integer::intValue).sum();
     }

@@ -50,7 +50,17 @@ public class StringCalculatorTests {
       stringCalculator.Add("-1,2,3");
       Assertions.fail("Exception Expected");
     } catch (RuntimeException ex) {
-      Assertions.assertEquals("Negatives not allowed", ex.getMessage());
+      Assertions.assertEquals("Negatives not allowed [-1]", ex.getMessage());
+    }
+  }
+
+  @Test
+  void testShouldRaiseExceptionOnMultipleNegatives() {
+    try {
+      stringCalculator.Add("-1,-2,3");
+      Assertions.fail("Exception Expected");
+    } catch (RuntimeException ex) {
+      Assertions.assertEquals("Negatives not allowed [-1, -2]", ex.getMessage());
     }
   }
 }
